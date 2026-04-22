@@ -613,7 +613,7 @@ test("POST /api/workspaces creates a new demand source from demand name", async 
 test("POST /api/workspaces returns 404 when demand source doc is missing", async () => {
   const server = buildServer({
     createDemandSource: async () => {
-      throw new DemandSourceManifestError(404, "未找到需求源文件：不存在的需求。请先创建 `Projects/飞枢系统/不存在的需求.md`（或 `Projects/飞枢系统/05-需求与模板/不存在的需求.md`），再点击“新建需求源”。");
+      throw new DemandSourceManifestError(404, "未找到需求源文件：不存在的需求。请先创建 `Projects/飞枢系统/不存在的需求.md`（或 `Projects/飞枢系统/demands与模板/不存在的需求.md`），再点击“新建需求源”。");
     }
   });
 
@@ -626,7 +626,7 @@ test("POST /api/workspaces returns 404 when demand source doc is missing", async
   });
 
   assert.equal(response.statusCode, 404);
-  assert.equal(response.json().message, "未找到需求源文件：不存在的需求。请先创建 `Projects/飞枢系统/不存在的需求.md`（或 `Projects/飞枢系统/05-需求与模板/不存在的需求.md`），再点击“新建需求源”。");
+  assert.equal(response.json().message, "未找到需求源文件：不存在的需求。请先创建 `Projects/飞枢系统/不存在的需求.md`（或 `Projects/飞枢系统/demands与模板/不存在的需求.md`），再点击“新建需求源”。");
 });
 
 test("GET /api/workspaces/:sourceId/overview returns source-scoped overview", async () => {
@@ -1492,7 +1492,7 @@ test("GET /api/events returns latest-first projected events", async () => {
           title: "已生成收费联调接口文档",
           summary: "已生成 5 个接口文档，纳入 4 条链。",
           source: "action",
-          relatedPath: "03-业务链资产/接口文档",
+          relatedPath: "chain-assets/接口文档",
           relatedSession: null,
           actionable: false
         }
@@ -1534,7 +1534,7 @@ test("GET /api/events returns latest-first projected events", async () => {
   assert.equal(eventTypes.includes("action_executed"), true);
   const actionEvent = payload.events.find((item: { type: string }) => item.type === "action_executed");
   assert.equal(actionEvent?.title, "已生成收费联调接口文档");
-  assert.equal(actionEvent?.relatedPath, "03-业务链资产/接口文档");
+  assert.equal(actionEvent?.relatedPath, "chain-assets/接口文档");
   const chainNotificationEvent = payload.events.find((item: { type: string }) => item.type === "chain_notified");
   assert.equal(chainNotificationEvent?.title, "操作日志记录");
   assert.equal(chainNotificationEvent?.summary, "操作日志记录 有新的链路通知。");
@@ -1696,7 +1696,7 @@ test("resolveProjectRoot handles both src and dist-like directories", async () =
   await Promise.all([
     mkdir(path.join(root, "share"), { recursive: true }),
     mkdir(path.join(root, "Playbooks"), { recursive: true }),
-    mkdir(path.join(root, "03-业务链资产"), { recursive: true })
+    mkdir(path.join(root, "chain-assets"), { recursive: true })
   ]);
 
   const srcDir = path.join(root, "Console", "server", "src");
@@ -1734,8 +1734,8 @@ test("POST /api/actions runs generate_fee_api_docs", async () => {
         success: true,
         actionType: request.actionType,
         eventId: "action:generate_fee_api_docs:2026-03-26 11:04",
-        message: "收费接口文档已生成，请前往 Projects/飞枢系统/03-业务链资产/接口文档/收费业务链联调总览.md 查看。",
-        outputDir: "Projects/飞枢系统/03-业务链资产/接口文档",
+        message: "收费接口文档已生成，请前往 Projects/飞枢系统/chain-assets/接口文档/收费业务链联调总览.md 查看。",
+        outputDir: "Projects/飞枢系统/chain-assets/接口文档",
         generatedFiles: ["收费业务链联调总览.md"],
         includedChainIds: ["ContractAddAndFee"]
       };
@@ -1996,7 +1996,7 @@ test("POST /api/workspaces/:sourceId/actions forwards generate_chain_test_cases 
         actionType: request.actionType,
         eventId: "action:generate_chain_test_cases:req-b:ReceiptPrinting",
         message: "ReceiptPrinting 测试用例已生成",
-        path: "03-业务链资产/测试用例/ReceiptPrinting-test-cases.md",
+        path: "chain-assets/测试用例/ReceiptPrinting-test-cases.md",
         generatedFiles: ["ReceiptPrinting-test-cases.md"]
       };
     },
@@ -2024,7 +2024,7 @@ test("POST /api/workspaces/:sourceId/actions forwards generate_chain_test_cases 
 
   assert.equal(response.statusCode, 200);
   assert.equal(response.json().actionType, "generate_chain_test_cases");
-  assert.equal(response.json().path, "03-业务链资产/测试用例/ReceiptPrinting-test-cases.md");
+  assert.equal(response.json().path, "chain-assets/测试用例/ReceiptPrinting-test-cases.md");
 });
 
 test("POST /api/workspaces/:sourceId/ai/chat forwards to source-scoped ai bridge", async () => {

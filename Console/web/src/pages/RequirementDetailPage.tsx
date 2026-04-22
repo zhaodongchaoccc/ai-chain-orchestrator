@@ -444,7 +444,7 @@ function ChainCard({ chain, requirementId, busyChainId, busyAction, platform, ha
           <button
             className="button button--secondary"
             onClick={() => {
-              openObsidianPath(`Projects/飞枢系统/03-业务链资产/地图/${requirementId}/${chain.id}.md`);
+              openObsidianPath(`Projects/飞枢系统/chain-assets/地图/${requirementId}/${chain.id}.md`);
             }}
             type="button"
           >

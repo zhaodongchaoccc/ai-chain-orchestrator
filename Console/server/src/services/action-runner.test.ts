@@ -22,7 +22,7 @@ async function makeActionFixture() {
   const reviewsRoot = path.join(projectRoot, "Reviews");
   const notificationsRoot = path.join(projectRoot, "share", "notifications");
   const codeListsRoot = path.join(projectRoot, "CodeLists");
-  const chainAssetRoot = path.join(projectRoot, "03-业务链资产", "测试用例");
+  const chainAssetRoot = path.join(projectRoot, "chain-assets", "测试用例");
 
   await Promise.all([
     mkdir(shareRoot, { recursive: true }),
@@ -1955,7 +1955,7 @@ test("generate_chain_test_cases writes a markdown draft and action event", async
   assert.equal(result.success, true);
   assert.equal(result.actionType, "generate_chain_test_cases");
   assert.equal(result.generatedFiles?.[0], "OperationLogTracking-test-cases.md");
-  assert.equal(result.path, "03-业务链资产/测试用例/OperationLogTracking-test-cases.md");
+  assert.equal(result.path, "chain-assets/测试用例/OperationLogTracking-test-cases.md");
 
   const generated = await readFile(path.join(fixture.chainAssetRoot, "OperationLogTracking-test-cases.md"), "utf8");
   assert.match(generated, /OperationLogTracking 测试用例草案/u);

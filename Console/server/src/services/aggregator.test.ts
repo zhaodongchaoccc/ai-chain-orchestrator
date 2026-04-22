@@ -81,11 +81,11 @@ async function makeProjectFixture() {
         title: "已生成收费联调接口文档",
         summary: "已生成 5 个接口文档，纳入 4 条链。",
         source: "action",
-        relatedPath: "03-业务链资产/接口文档",
+        relatedPath: "chain-assets/接口文档",
         relatedSession: null,
         actionable: false,
         actionType: "generate_fee_api_docs",
-        outputDir: "03-业务链资产/接口文档",
+        outputDir: "chain-assets/接口文档",
         generatedFiles: ["收费业务链联调总览.md"],
         includedChainIds: ["ContractAddAndFee"]
       }) + "\n"

@@ -17,7 +17,7 @@ async function main() {
     mapsRoot: serverConfig.paths.mapsRoot,
     reviewsRoot: serverConfig.paths.reviewsRoot,
     codeListsRoot: serverConfig.paths.projectRoot + "/CodeLists",
-    demandTemplatesRoot: serverConfig.paths.projectRoot + "/05-需求与模板",
+    demandTemplatesRoot: serverConfig.paths.projectRoot + "/demands与模板",
     worktreesRoot: process.env.FF_WORKTREES_ROOT ?? path.join(process.env.HOME ?? os.homedir(), "ff-worktrees"),
     demandName
   });

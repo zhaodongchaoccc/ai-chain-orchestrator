@@ -135,8 +135,8 @@ bash "~/PasObsidian/Projects/飞枢系统/Playbooks/cleanup-legacy-work-item-mod
 - `Projects/飞枢系统/share/action-events.jsonl`
 - `Projects/飞枢系统/Playbooks/dispatch-watcher.pid`
 - `Projects/飞枢系统/Playbooks/dispatch-watcher.log`
-- `Projects/飞枢系统/03-业务链资产/地图/`
-- `Projects/飞枢系统/03-业务链资产/波次总结/`
+- `Projects/飞枢系统/chain-assets/地图/`
+- `Projects/飞枢系统/chain-assets/波次总结/`
 - `tmux ls`
 
 ## 支撑文档

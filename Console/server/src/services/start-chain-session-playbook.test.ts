@@ -160,7 +160,7 @@ test("start chain playbook builds scoped prompt paths for source workspaces", as
           label: "testAll",
           kind: "single",
           enabled: true,
-          sourceDocPath: "Projects/飞枢系统/05-需求/templates/testAll.md",
+          sourceDocPath: "Projects/飞枢系统/demands/templates/testAll.md",
           worktreePath: path.join(worktreesRoot, "testall"),
           legacyRoot: false,
           draftIncomplete: true
@@ -254,11 +254,11 @@ esac
   assert.match(stdout, /已启动 session: chain-testall-ContractAddAndFeeLogEnhancement/);
 
   const promptContent = await readFile(promptPath!, "utf-8");
-  assert.match(promptContent, /Projects\/飞枢系统\/03-业务链资产\/地图\/testall\/ContractAddAndFeeLogEnhancement\.md/);
-  assert.match(promptContent, /Projects\/飞枢系统\/03-业务链资产\/代码清单\/testall\/ContractAddAndFeeLogEnhancement\.md/);
+  assert.match(promptContent, /Projects\/飞枢系统\/chain-assets\/地图\/testall\/ContractAddAndFeeLogEnhancement\.md/);
+  assert.match(promptContent, /Projects\/飞枢系统\/chain-assets\/代码清单\/testall\/ContractAddAndFeeLogEnhancement\.md/);
   assert.match(promptContent, /Projects\/飞枢系统\/share\/sources\/testall\/work-items\/ContractAddAndFeeLogEnhancement\.json/);
   assert.match(promptContent, /Projects\/飞枢系统\/share\/sources\/testall\/chain-status\.json/);
-  assert.match(promptContent, /Projects\/飞枢系统\/05-需求\/templates\/testAll\.md/);
+  assert.match(promptContent, /Projects\/飞枢系统\/demands\/templates\/testAll\.md/);
 });
 
 test("start chain playbook keeps sourceId in resume hint for scoped workspaces", async () => {
@@ -405,7 +405,7 @@ test("start chain playbook uses repoKey-specific worktree for frontend chains", 
             id: "req-ui",
             title: "前端需求",
             status: "active",
-            docPath: "Projects/飞枢系统/05-需求/req-ui/前端需求.md",
+            docPath: "Projects/飞枢系统/demands/req-ui/前端需求.md",
             kind: "single",
             chains: [
               {

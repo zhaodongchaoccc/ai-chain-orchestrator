@@ -112,7 +112,7 @@ export function projectStatusToWorkspaceEntries(status: ProjectStatusRecord): Wo
       label: typeof requirement.title === "string" && requirement.title.trim().length > 0 ? requirement.title.trim() : requirement.id.trim(),
       kind: requirement.kind === "single" ? "single" : "combined",
       enabled: requirement.status !== "archived",
-      sourceDocPath: typeof requirement.docPath === "string" && requirement.docPath.trim().length > 0 ? requirement.docPath.trim() : `Projects/飞枢系统/05-需求/${requirement.id.trim()}/${requirement.id.trim()}.md`,
+      sourceDocPath: typeof requirement.docPath === "string" && requirement.docPath.trim().length > 0 ? requirement.docPath.trim() : `Projects/飞枢系统/demands/${requirement.id.trim()}/${requirement.id.trim()}.md`,
       worktreePath: typeof requirement.worktreePath === "string" && requirement.worktreePath.trim().length > 0 ? requirement.worktreePath.trim() : null,
       legacyRoot: false,
       draftIncomplete: requirement.draftIncomplete === true
@@ -148,7 +148,7 @@ export async function getRequirementDetail(projectRoot: string, shareRoot: strin
   const background = await readRequirementBackground(projectRoot, requirement.docPath);
   const interfaceDocPath = resolveInterfaceDocPath(requirement.docPath);
   const interfaceExcerpt = interfaceDocPath ? await readExcerpt(projectRoot, interfaceDocPath) : null;
-  const requirementCodeListPath = `Projects/飞枢系统/03-业务链资产/代码清单/${sourceId}/需求代码文件清单.md`;
+  const requirementCodeListPath = `Projects/飞枢系统/chain-assets/代码清单/${sourceId}/需求代码文件清单.md`;
   const requirementCodeListGenerated = await hasProjectDoc(projectRoot, requirementCodeListPath);
 
   return {
@@ -253,7 +253,7 @@ export async function deleteRequirement(projectRoot: string, shareRoot: string, 
     throw new Error(`Unknown requirement id: ${sourceId}`);
   }
 
-  const archiveDir = path.join(projectRoot, "06-归档");
+  const archiveDir = path.join(projectRoot, "archives");
   await mkdir(archiveDir, { recursive: true });
   const archiveFilename = `${sourceId}-${sanitizeFilename(target.title)}-${new Date().toISOString().slice(0, 10)}.md`;
   const archivePath = path.join(archiveDir, archiveFilename);
@@ -273,9 +273,9 @@ export async function deleteRequirement(projectRoot: string, shareRoot: string, 
   const deletedPaths: string[] = [];
   for (const candidate of [
     path.dirname(resolveProjectDocPath(projectRoot, target.docPath)),
-    path.join(projectRoot, "03-业务链资产", "地图", sourceId),
-    path.join(projectRoot, "03-业务链资产", "代码清单", sourceId),
-    path.join(projectRoot, "03-业务链资产", "波次总结", sourceId),
+    path.join(projectRoot, "chain-assets", "地图", sourceId),
+    path.join(projectRoot, "chain-assets", "代码清单", sourceId),
+    path.join(projectRoot, "chain-assets", "波次总结", sourceId),
     path.join(shareRoot, "sources", sourceId),
     path.join(projectRoot, "Sessions", "sources", sourceId)
   ]) {
@@ -295,7 +295,7 @@ async function generateRequirementArchive(projectRoot: string, requirement: Proj
   const background = await readRequirementBackground(projectRoot, requirement.docPath);
   const interfacePath = resolveInterfaceDocPath(requirement.docPath);
   const interfaceExcerpt = interfacePath ? (await readProjectDoc(projectRoot, interfacePath)).trim() : "";
-  const codeListDir = path.join(projectRoot, "03-业务链资产", "代码清单", requirement.id);
+  const codeListDir = path.join(projectRoot, "chain-assets", "代码清单", requirement.id);
   const techSummaries = await readMarkdownDirectory(codeListDir);
   const riskChains = chains.filter((chain) => chain.stage !== "S5" && chain.status !== "done");
 
@@ -325,10 +325,10 @@ async function generateRequirementArchive(projectRoot: string, requirement: Proj
     ...(riskChains.length > 0 ? riskChains.map((chain) => `- ${chain.titleZh ?? chain.id}：stage=${chain.stage ?? "PENDING"}，status=${chain.status ?? "idle"}，${chain.summary ?? "暂无补充说明"}`) : ["- 无未收口链。"]),
     "",
     "## 七、关联资产（已清理）",
-    `- 05-需求/${requirement.id}/`,
-    `- 03-业务链资产/地图/${requirement.id}/`,
-    `- 03-业务链资产/代码清单/${requirement.id}/`,
-    `- 03-业务链资产/波次总结/${requirement.id}/`,
+    `- demands/${requirement.id}/`,
+    `- chain-assets/地图/${requirement.id}/`,
+    `- chain-assets/代码清单/${requirement.id}/`,
+    `- chain-assets/波次总结/${requirement.id}/`,
     `- share/sources/${requirement.id}/`,
     `- Sessions/sources/${requirement.id}/`,
     "",
@@ -412,7 +412,7 @@ function buildRequirementSummary(requirement: ProjectRequirementRecord, tmuxSess
 function normalizeChain(chain: ProjectChainRecord, tmuxSessions: string[]): RequirementChainView {
   const session = typeof chain.session === "string" && chain.session.trim().length > 0 ? chain.session.trim() : null;
   const sourceId = typeof session === "string" ? session.split("-").slice(1, -1).join("-") : null;
-  const codeListPath = sourceId ? `Projects/飞枢系统/03-业务链资产/代码清单/${sourceId}/${chain.id}.md` : null;
+  const codeListPath = sourceId ? `Projects/飞枢系统/chain-assets/代码清单/${sourceId}/${chain.id}.md` : null;
   return {
     ...chain,
     titleZh: typeof chain.titleZh === "string" && chain.titleZh.trim().length > 0 ? chain.titleZh.trim() : chain.id,

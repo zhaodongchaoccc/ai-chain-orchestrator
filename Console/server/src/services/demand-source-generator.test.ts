@@ -14,10 +14,10 @@ async function writeJson(filePath: string, value: unknown) {
 async function makeFixture() {
   const projectRoot = await mkdtemp(path.join(os.tmpdir(), "ff-demand-source-generator-"));
   const shareRoot = path.join(projectRoot, "share");
-  const mapsRoot = path.join(projectRoot, "03-业务链资产", "地图");
-  const reviewsRoot = path.join(projectRoot, "03-业务链资产", "波次总结");
-  const codeListsRoot = path.join(projectRoot, "03-业务链资产", "代码清单");
-  const demandTemplatesRoot = path.join(projectRoot, "05-需求", "templates");
+  const mapsRoot = path.join(projectRoot, "chain-assets", "地图");
+  const reviewsRoot = path.join(projectRoot, "chain-assets", "波次总结");
+  const codeListsRoot = path.join(projectRoot, "chain-assets", "代码清单");
+  const demandTemplatesRoot = path.join(projectRoot, "demands", "templates");
   const worktreesRoot = path.join(projectRoot, "ff-worktrees");
 
   await Promise.all([
@@ -35,7 +35,7 @@ async function makeFixture() {
       label: "newfee",
       kind: "combined",
       enabled: true,
-      sourceDocPath: "Projects/飞枢系统/05-需求/newfee/newfee.md",
+      sourceDocPath: "Projects/飞枢系统/demands/newfee/newfee.md",
       worktreePath: path.join(worktreesRoot, "newfee"),
       legacyRoot: false,
       draftIncomplete: false
@@ -114,7 +114,7 @@ test("generateDemandSourceSkeleton creates an entry doc and registers draftIncom
 
   assert.match(entryDoc, /B需求/u);
   assert.match(entryDoc, /Projects\/飞枢系统\/B需求\.md/u);
-  assert.match(result.entryDocPath, /05-需求\/.+\/README\.md$/u);
+  assert.match(result.entryDocPath, /demands\/.+\/README\.md$/u);
   assert.equal(workspaces[1].draftIncomplete, true);
 });
 
@@ -166,7 +166,7 @@ test("ensureDefectChainForSource backfills missing Defect chain into existing so
       label: "newfee",
       kind: "combined",
       enabled: true,
-      sourceDocPath: "Projects/飞枢系统/05-需求/newfee/newfee.md",
+      sourceDocPath: "Projects/飞枢系统/demands/newfee/newfee.md",
       worktreePath: path.join(fixture.worktreesRoot, "newfee"),
       legacyRoot: false,
       draftIncomplete: false
@@ -176,7 +176,7 @@ test("ensureDefectChainForSource backfills missing Defect chain into existing so
       label: "testall",
       kind: "single",
       enabled: true,
-      sourceDocPath: "Projects/飞枢系统/05-需求/templates/testall.md",
+      sourceDocPath: "Projects/飞枢系统/demands/templates/testall.md",
       worktreePath: path.join(fixture.worktreesRoot, sourceId),
       legacyRoot: false,
       draftIncomplete: false

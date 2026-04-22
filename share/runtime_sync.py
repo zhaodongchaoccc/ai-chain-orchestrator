@@ -133,8 +133,8 @@ def build_chain_session_name(chain_id: str, source_id: Optional[str] = None) -> 
 def build_source_chain_asset_paths(chain_id: str, source_id: Optional[str] = None) -> Dict[str, str]:
     effective_source_id = normalize_source_id(source_id)
     return {
-        "map": f"Projects/飞枢系统/03-业务链资产/地图/{effective_source_id}/{chain_id}.md",
-        "codeList": f"Projects/飞枢系统/03-业务链资产/代码清单/{effective_source_id}/{chain_id}.md",
+        "map": f"Projects/飞枢系统/chain-assets/地图/{effective_source_id}/{chain_id}.md",
+        "codeList": f"Projects/飞枢系统/chain-assets/代码清单/{effective_source_id}/{chain_id}.md",
         "workItem": f"Projects/飞枢系统/share/sources/{effective_source_id}/work-items/{chain_id}.json",
     }
 
@@ -147,7 +147,7 @@ def build_source_control_paths(source_id: Optional[str] = None) -> Dict[str, str
         "queue": f"Projects/飞枢系统/share/sources/{effective_source_id}/dispatch-queue.json",
         "registry": f"Projects/飞枢系统/share/sources/{effective_source_id}/chain-registry.json",
         "scheduler": f"Projects/飞枢系统/share/sources/{effective_source_id}/scheduler-state.json",
-        "codeListsOverview": f"Projects/飞枢系统/03-业务链资产/代码清单/{effective_source_id}/需求代码文件清单.md",
+        "codeListsOverview": f"Projects/飞枢系统/chain-assets/代码清单/{effective_source_id}/需求代码文件清单.md",
     }
 
 
@@ -1053,7 +1053,7 @@ def ensure_code_list_doc(
             f"# {chain_id} 代码清单",
             "",
             "## 关联文档",
-            f"- 业务链地图：`Projects/飞枢系统/03-业务链资产/地图/newfee/{chain_id}.md`",
+            f"- 业务链地图：`Projects/飞枢系统/chain-assets/地图/newfee/{chain_id}.md`",
             f"- 项目首页：`Projects/飞枢系统/README.md`",
             "",
             "## 基本信息",
@@ -1064,7 +1064,7 @@ def ensure_code_list_doc(
             f"- 本轮是否改代码：`{code_changed}`",
             f"- 文件数：`{max(len(code_entries), 0)}`",
             f"- 验证状态：`{verify_status}`",
-            f"- 关联业务链地图：`Projects/飞枢系统/03-业务链资产/地图/newfee/{chain_id}.md`",
+            f"- 关联业务链地图：`Projects/飞枢系统/chain-assets/地图/newfee/{chain_id}.md`",
             "",
             "## 本轮结论",
             f"- 当前结论：{summary or '待补充'}",
@@ -1124,7 +1124,7 @@ def ensure_code_list_doc(
             f"- 本轮是否改代码：`{code_changed}`",
             f"- 文件数：`{max(len(code_entries), existing_file_count, 0)}`",
             f"- 验证状态：`{verify_status}`",
-            f"- 关联业务链地图：`Projects/飞枢系统/03-业务链资产/地图/newfee/{chain_id}.md`",
+            f"- 关联业务链地图：`Projects/飞枢系统/chain-assets/地图/newfee/{chain_id}.md`",
         ]
     )
     conclusion = "\n".join(
@@ -1162,7 +1162,7 @@ def ensure_map_links(map_path: Path, chain_id: str) -> None:
     links_block = "\n".join(
         [
             "## 关联文档",
-            f"- 代码清单：`Projects/飞枢系统/03-业务链资产/代码清单/newfee/{chain_id}.md`",
+            f"- 代码清单：`Projects/飞枢系统/chain-assets/代码清单/newfee/{chain_id}.md`",
         ]
     )
 
@@ -1217,7 +1217,7 @@ def build_code_lists_overview(code_lists_dir: Path, chain_status: Dict[str, Dict
             "阻塞" if stage == "BLOCKED" else "已回滚" if stage == "ROLLBACK" else "未验证",
         )
         rows.append(
-            f"| {chain_id} | {CHAIN_ZH.get(chain_id, chain_id)} | {stage} | {clean_status} | {code_changed} | {file_count} | {verify_status} | `03-业务链资产/地图/newfee/{chain_id}.md` | `03-业务链资产/代码清单/newfee/{chain_id}.md` |"
+            f"| {chain_id} | {CHAIN_ZH.get(chain_id, chain_id)} | {stage} | {clean_status} | {code_changed} | {file_count} | {verify_status} | `chain-assets/地图/newfee/{chain_id}.md` | `chain-assets/代码清单/newfee/{chain_id}.md` |"
         )
 
     return "\n".join(rows) + "\n"
@@ -1869,7 +1869,7 @@ def build_source_main_control_resume_prompt(
     effective_chain_status = chain_status_path or f"{proj}/share/sources/{source_id}/chain-status.json"
     effective_queue = queue_path or f"{proj}/share/sources/{source_id}/dispatch-queue.json"
     effective_work_items = work_items_dir or f"{proj}/share/sources/{source_id}/work-items"
-    effective_source_doc = source_doc_path or f"{proj}/05-需求/{source_id}/"
+    effective_source_doc = source_doc_path or f"{proj}/demands/{source_id}/"
     return "\n".join(
         [
             f"你现在是飞枢系统 [{source_id} / {label}] 需求源的子主控 session。",
@@ -1934,7 +1934,7 @@ def build_system_iteration_prompt(current_task: str = "") -> str:
             "【职责范围 —— 只改飞枢系统本身】",
             "- 维护和迭代 runtime_sync.py、Playbooks/*.sh、Console/、02-协作规范/*.md",
             "- 优化提示词模板、记忆体系、目录结构",
-            "- 补写 07-决策记录/ 决策记录",
+            "- 补写 decisions/ 决策记录",
             "",
             "【禁止越界 —— 严格禁止】",
             "- 不做任何 ff 仓库业务链实现",
@@ -1947,7 +1947,7 @@ def build_system_iteration_prompt(current_task: str = "") -> str:
             f"1. {proj}/share/memory-distilled.md",
             f"2. {proj}/02-协作规范/rules.md",
             f"3. {proj}/02-协作规范/ops.md",
-            f"4. {proj}/07-决策记录/（了解历史决策，避免重复踩坑）",
+            f"4. {proj}/decisions/（了解历史决策，避免重复踩坑）",
             f"5. {proj}/Console/docs/implementation-status.md",
             f"6. {proj}/README.md",
             "",
@@ -1958,7 +1958,7 @@ def build_system_iteration_prompt(current_task: str = "") -> str:
             f"- {proj}/Playbooks/*.sh（改脚本时）",
             "",
             "【完成每次改动后必须执行】",
-            f"1. 补写 {proj}/07-决策记录/YYYY-MM-DD-{{主题}}.md",
+            f"1. 补写 {proj}/decisions/YYYY-MM-DD-{{主题}}.md",
             "2. 触发蒸馏刷新：POST http://127.0.0.1:8787/api/memory/distill",
             "3. 运行受影响的定向测试",
             "4. 如果本次任务来自 system todo，调用 POST /api/system/todos/:id/complete 标记完成",
@@ -2058,10 +2058,10 @@ def build_worker_read_order_lines(
 ) -> List[str]:
     project_root = _get_project_root()
     effective_chain_resume_path = chain_resume_path or get_chain_resume_packet_path(chain_id)
-    effective_map_path = map_path or str(project_root / "03-业务链资产" / "地图" / DEFAULT_SOURCE_ID / f"{chain_id}.md")
+    effective_map_path = map_path or str(project_root / "chain-assets" / "地图" / DEFAULT_SOURCE_ID / f"{chain_id}.md")
     effective_chain_status_path = chain_status_path or str(project_root / "share" / "sources" / DEFAULT_SOURCE_ID / "chain-status.json")
     effective_work_item_path = work_item_path or str(project_root / "share" / "sources" / DEFAULT_SOURCE_ID / "work-items" / f"{chain_id}.json")
-    effective_code_list_path = code_list_path or str(project_root / "03-业务链资产" / "代码清单" / DEFAULT_SOURCE_ID / f"{chain_id}.md")
+    effective_code_list_path = code_list_path or str(project_root / "chain-assets" / "代码清单" / DEFAULT_SOURCE_ID / f"{chain_id}.md")
     effective_source_doc_path = source_doc_path or str(project_root / f"{DEFAULT_SOURCE_ID}.md")
     ops_path = _project_str("02-协作规范", "ops.md")
     if stage == "S5":
@@ -2576,10 +2576,10 @@ def build_project_homepage(chain_status: Dict[str, Dict[str, str]], queue: Dict)
         *build_control_center_status_section(),
         "",
         "## 当前重点产物",
-        "- 业务链地图：`Projects/飞枢系统/03-业务链资产/地图/**/*.md`",
-        "- 代码清单：`Projects/飞枢系统/03-业务链资产/代码清单/**/*.md`",
+        "- 业务链地图：`Projects/飞枢系统/chain-assets/地图/**/*.md`",
+        "- 代码清单：`Projects/飞枢系统/chain-assets/代码清单/**/*.md`",
         "- 主控交接：`Projects/飞枢系统/Sessions/*.md`",
-        "- 波次回顾：`Projects/飞枢系统/03-业务链资产/波次总结/**/*.md`",
+        "- 波次回顾：`Projects/飞枢系统/chain-assets/波次总结/**/*.md`",
         "- 主控共享状态：`Projects/飞枢系统/share/sources/newfee/chain-status.json`",
         "- 调度队列：`Projects/飞枢系统/share/sources/newfee/dispatch-queue.json`",
         "- 协作记忆：`Projects/飞枢系统/share/memory-distilled.md`",
@@ -2593,15 +2593,15 @@ def build_project_homepage(chain_status: Dict[str, Dict[str, str]], queue: Dict)
         "2. `Projects/飞枢系统/Sessions/LATEST.md`",
         "3. `Projects/飞枢系统/share/sources/newfee/chain-status.json`",
         "4. `Projects/飞枢系统/share/sources/newfee/dispatch-queue.json`",
-        "5. 当前活跃链的 `03-业务链资产/地图/newfee/*.md`",
-        "6. `Projects/飞枢系统/03-业务链资产/代码清单/newfee/需求代码文件清单.md`",
+        "5. 当前活跃链的 `chain-assets/地图/newfee/*.md`",
+        "6. `Projects/飞枢系统/chain-assets/代码清单/newfee/需求代码文件清单.md`",
         "",
         "## 协作入口",
         "- 项目总览：`Projects/飞枢系统/README.md`",
-        "- 新需求提报模板：`Projects/飞枢系统/05-需求/templates/新需求提报模板.md`",
+        "- 新需求提报模板：`Projects/飞枢系统/demands/templates/新需求提报模板.md`",
         "- 协作蒸馏快照：`Projects/飞枢系统/share/memory-distilled.md`",
-        "- 当前组合型需求入口：`Projects/飞枢系统/05-需求/newfee/newfee.md`",
-        "- 业务链阶段回顾模板：`Projects/飞枢系统/05-需求/templates/阶段回顾模板.md`",
+        "- 当前组合型需求入口：`Projects/飞枢系统/demands/newfee/newfee.md`",
+        "- 业务链阶段回顾模板：`Projects/飞枢系统/demands/templates/阶段回顾模板.md`",
         "- 启动脚本：`Projects/飞枢系统/Playbooks/start-ff-parallel-workspace.sh`",
         "- 关闭脚本：`Projects/飞枢系统/Playbooks/stop-ff-parallel-workspace.sh`",
         "- 状态脚本：`Projects/飞枢系统/Playbooks/status-ff-parallel-workspace.sh`",
@@ -2799,7 +2799,7 @@ def process_notifications_once(
     if code_lists_dir:
         code_lists_dir.mkdir(parents=True, exist_ok=True)
         for chain_id in ALL_CHAINS:
-            map_file = (maps_dir / f"{chain_id}.md") if maps_dir else Path(f"Projects/飞枢系统/03-业务链资产/地图/newfee/{chain_id}.md")
+            map_file = (maps_dir / f"{chain_id}.md") if maps_dir else Path(f"Projects/飞枢系统/chain-assets/地图/newfee/{chain_id}.md")
             ensure_code_list_doc(
                 code_lists_dir / f"{chain_id}.md",
                 chain_id=chain_id,

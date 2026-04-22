@@ -73,10 +73,10 @@ Before first run, ensure the required directories exist:
 
 ```bash
 # Create asset directories (used by the framework)
-mkdir -p 03-业务链资产/地图
-mkdir -p 03-业务链资产/代码清单
-mkdir -p 03-业务链资产/波次总结
-mkdir -p 05-需求
+mkdir -p chain-assets/地图
+mkdir -p chain-assets/代码清单
+mkdir -p chain-assets/波次总结
+mkdir -p demands
 mkdir -p Sessions
 
 # Configure environment (WSL2 only)

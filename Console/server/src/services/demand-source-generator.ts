@@ -227,9 +227,9 @@ function buildEntryDoc(sourceId: string, parsedDoc: ParsedDemandSourceDoc) {
 
 ## 固定落点
 - 原始需求：${parsedDoc.relativePath}
-- 需求目录：Projects/飞枢系统/05-需求/${sourceId}/
-- 业务链地图：Projects/飞枢系统/03-业务链资产/地图/${sourceId}/
-- 代码清单：Projects/飞枢系统/03-业务链资产/代码清单/${sourceId}/
-- 波次总结：Projects/飞枢系统/03-业务链资产/波次总结/${sourceId}/
+- 需求目录：Projects/飞枢系统/demands/${sourceId}/
+- 业务链地图：Projects/飞枢系统/chain-assets/地图/${sourceId}/
+- 代码清单：Projects/飞枢系统/chain-assets/代码清单/${sourceId}/
+- 波次总结：Projects/飞枢系统/chain-assets/波次总结/${sourceId}/
 `;
 }

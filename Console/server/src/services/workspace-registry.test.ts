@@ -76,7 +76,7 @@ test("loadWorkspaceRegistry prefers project-status.json over workspaces.json", a
         id: "req-a3136763",
         title: "风险预警已欠费状态数据",
         status: "active",
-        docPath: "Projects/飞枢系统/05-需求/req-a3136763/风险预警已欠费状态数据.md",
+        docPath: "Projects/飞枢系统/demands/req-a3136763/风险预警已欠费状态数据.md",
         kind: "single",
         worktreePath: "/tmp/req-a3136763"
       }
@@ -103,7 +103,7 @@ test("loadWorkspaceRegistry prefers project-status.json over workspaces.json", a
       label: "风险预警已欠费状态数据",
       kind: "single",
       enabled: true,
-      sourceDocPath: "Projects/飞枢系统/05-需求/req-a3136763/风险预警已欠费状态数据.md",
+      sourceDocPath: "Projects/飞枢系统/demands/req-a3136763/风险预警已欠费状态数据.md",
       worktreePath: "/tmp/req-a3136763",
       legacyRoot: false,
       draftIncomplete: false

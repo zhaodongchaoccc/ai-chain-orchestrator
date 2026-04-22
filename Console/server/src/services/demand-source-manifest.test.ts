@@ -13,7 +13,7 @@ async function writeJson(filePath: string, value: unknown) {
 async function makeFixture() {
   const projectRoot = await mkdtemp(path.join(os.tmpdir(), "ff-demand-source-manifest-"));
   const shareRoot = path.join(projectRoot, "share");
-  const templateRoot = path.join(projectRoot, "05-需求", "templates");
+  const templateRoot = path.join(projectRoot, "demands", "templates");
 
   await Promise.all([
     mkdir(shareRoot, { recursive: true }),
@@ -26,7 +26,7 @@ async function makeFixture() {
       label: "newfee",
       kind: "combined",
       enabled: true,
-      sourceDocPath: "Projects/飞枢系统/05-需求/newfee/newfee.md",
+      sourceDocPath: "Projects/飞枢系统/demands/newfee/newfee.md",
       worktreePath: "/tmp/ff-worktrees/newfee",
       legacyRoot: false,
       draftIncomplete: false
@@ -52,7 +52,7 @@ test("locateDemandSourceDoc falls back to template directory when root file is a
 
   const doc = await locateDemandSourceDoc(fixture.projectRoot, "B需求");
 
-  assert.equal(doc.relativePath, "Projects/飞枢系统/05-需求/templates/B需求.md");
+  assert.equal(doc.relativePath, "Projects/飞枢系统/demands/templates/B需求.md");
 });
 
 test("locateDemandSourceDoc blocks creation when no matching demand file exists", async () => {
@@ -62,7 +62,7 @@ test("locateDemandSourceDoc blocks creation when no matching demand file exists"
     () => locateDemandSourceDoc(fixture.projectRoot, "不存在的需求"),
     (error: unknown) => {
       assert.equal(error instanceof DemandSourceManifestError, true);
-      assert.equal((error as DemandSourceManifestError).message, "未找到需求源文件：不存在的需求。请先创建 `Projects/飞枢系统/不存在的需求.md`（或 `Projects/飞枢系统/05-需求/templates/不存在的需求.md`），再点击“新建需求源”。");
+      assert.equal((error as DemandSourceManifestError).message, "未找到需求源文件：不存在的需求。请先创建 `Projects/飞枢系统/不存在的需求.md`（或 `Projects/飞枢系统/demands/templates/不存在的需求.md`），再点击“新建需求源”。");
       return true;
     }
   );

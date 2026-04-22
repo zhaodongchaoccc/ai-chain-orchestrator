@@ -11,10 +11,10 @@ const paths = {
   playbooksRoot: process.cwd().replace("/Console/server", "") + "/Playbooks",
 };
 
-const DECISIONS_DIR = path.join(paths.projectRoot, "07-决策记录");
+const DECISIONS_DIR = path.join(paths.projectRoot, "decisions");
 
 describe("system routes", () => {
-  it("GET /api/system/todos returns parsed todos from 07-决策记录", async () => {
+  it("GET /api/system/todos returns parsed todos from decisions", async () => {
     const server = Fastify();
     registerSystemRoutes(server, paths);
     await server.ready();

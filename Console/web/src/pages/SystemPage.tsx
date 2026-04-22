@@ -192,7 +192,7 @@ export function SystemPage({ onOpenRequirements }: SystemPageProps) {
           <div className="panel__title-row">
             <div>
               <h2>系统代办</h2>
-              <p className="muted">来自 07-决策记录 的待执行任务，由系统迭代 AI 或人工推进。</p>
+              <p className="muted">来自 decisions 的待执行任务，由系统迭代 AI 或人工推进。</p>
             </div>
             <button className="button button--secondary" disabled={todosLoading} onClick={loadTodos} type="button">刷新</button>
           </div>

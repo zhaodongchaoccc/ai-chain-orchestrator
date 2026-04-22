@@ -35,8 +35,8 @@ const ROOT_LEVEL_LOCATOR = (projectRoot: string, demandName: string) => ({
 });
 
 const TEMPLATE_LEVEL_LOCATOR = (projectRoot: string, demandName: string) => ({
-  filePath: path.join(projectRoot, "05-需求", "templates", `${demandName}.md`),
-  relativePath: `Projects/飞枢系统/05-需求/templates/${demandName}.md`
+  filePath: path.join(projectRoot, "demands", "templates", `${demandName}.md`),
+  relativePath: `Projects/飞枢系统/demands/templates/${demandName}.md`
 });
 
 export async function locateDemandSourceDoc(projectRoot: string, demandName: string): Promise<LocatedDemandSourceDoc> {
@@ -53,7 +53,7 @@ export async function locateDemandSourceDoc(projectRoot: string, demandName: str
 }
 
 function buildMissingDemandSourceDocMessage(demandName: string) {
-  return `未找到需求源文件：${demandName}。请先创建 \`Projects/飞枢系统/${demandName}.md\`（或 \`Projects/飞枢系统/05-需求/templates/${demandName}.md\`），再点击“新建需求源”。`;
+  return `未找到需求源文件：${demandName}。请先创建 \`Projects/飞枢系统/${demandName}.md\`（或 \`Projects/飞枢系统/demands/templates/${demandName}.md\`），再点击“新建需求源”。`;
 }
 
 export async function upsertWorkspaceManifestEntry(options: UpsertDemandSourceManifestOptions): Promise<WorkspaceRegistryEntry> {

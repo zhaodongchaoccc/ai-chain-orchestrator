@@ -29,7 +29,7 @@ export interface TodosResponse {
 }
 
 const TODO_REGEX = /^- \[( |x)\](?:\s*\[(AI|人工)\])?\s*(.+)$/gm;
-const DECISIONS_DIR = "07-决策记录";
+const DECISIONS_DIR = "decisions";
 
 export function registerSystemRoutes(server: FastifyInstance, paths: typeof ffPaths) {
   server.get("/api/system/todos", async () => {

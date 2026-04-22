@@ -13,7 +13,7 @@ async function writeJson(filePath: string, value: unknown) {
 async function makeFixture() {
   const projectRoot = await mkdtemp(path.join(os.tmpdir(), "ff-project-status-"));
   const shareRoot = path.join(projectRoot, "share");
-  const requirementDir = path.join(projectRoot, "05-需求", "req-demo");
+  const requirementDir = path.join(projectRoot, "demands", "req-demo");
 
   await Promise.all([
     mkdir(shareRoot, { recursive: true }),
@@ -42,7 +42,7 @@ async function makeFixture() {
         status: "active",
         createdAt: "2026-04-21T10:00:00.000Z",
         updatedAt: "2026-04-21T10:00:00.000Z",
-        docPath: "Projects/飞枢系统/05-需求/req-demo/演示需求.md",
+        docPath: "Projects/飞枢系统/demands/req-demo/演示需求.md",
         chains: [
           {
             id: "DemoBackend",
@@ -107,9 +107,9 @@ test("updateChainStatus rewrites chain status in project-status.json", async () 
 test("writeInterfaceDoc writes interface.md beside requirement doc", async () => {
   const fixture = await makeFixture();
 
-  const outputPath = await writeInterfaceDoc(fixture.projectRoot, "Projects/飞枢系统/05-需求/req-demo/演示需求.md", "# 接口约定\n\n- demo");
+  const outputPath = await writeInterfaceDoc(fixture.projectRoot, "Projects/飞枢系统/demands/req-demo/演示需求.md", "# 接口约定\n\n- demo");
 
-  assert.equal(outputPath, path.join(fixture.projectRoot, "05-需求", "req-demo", "interface.md"));
+  assert.equal(outputPath, path.join(fixture.projectRoot, "demands", "req-demo", "interface.md"));
   const written = await readFile(outputPath, "utf8");
   assert.match(written, /接口约定/);
 });

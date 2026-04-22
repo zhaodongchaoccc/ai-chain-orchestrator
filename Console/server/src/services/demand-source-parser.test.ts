@@ -34,7 +34,7 @@ test("parseDemandSourceDoc extracts title, background, constraints and expected 
 test("parseDemandSourceDoc classifies combined demand sources using explicit combined hints", () => {
   const parsed = parseDemandSourceDoc({
     demandName: "newfee",
-    relativePath: "Projects/飞枢系统/05-需求与模板/10-组合需求入口（newfee）.md",
+    relativePath: "Projects/飞枢系统/demands与模板/10-组合需求入口（newfee）.md",
     content: `# 组合需求入口（newfee）
 
 ## 当前定位

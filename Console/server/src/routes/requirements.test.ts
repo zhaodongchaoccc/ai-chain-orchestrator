@@ -16,7 +16,7 @@ async function makeFixture() {
   const projectRoot = await mkdtemp(path.join(os.tmpdir(), "ff-requirements-route-"));
   const shareRoot = path.join(projectRoot, "share");
   const playbooksRoot = path.join(projectRoot, "Playbooks");
-  const requirementDir = path.join(projectRoot, "05-需求", "req-demo");
+  const requirementDir = path.join(projectRoot, "demands", "req-demo");
 
   await Promise.all([
     mkdir(shareRoot, { recursive: true }),
@@ -45,7 +45,7 @@ async function makeFixture() {
         id: "req-demo",
         title: "演示需求",
         status: "active",
-        docPath: "Projects/飞枢系统/05-需求/req-demo/演示需求.md",
+        docPath: "Projects/飞枢系统/demands/req-demo/演示需求.md",
         kind: "single",
         chains: [
           {
@@ -86,9 +86,9 @@ async function makeFixture() {
     webRoot: path.join(projectRoot, "Console", "web"),
     workspacesIndexPath: path.join(shareRoot, "workspaces.json"),
     actionEventsPath: path.join(shareRoot, "action-events.jsonl"),
-    mapsRoot: path.join(projectRoot, "03-业务链资产", "地图"),
-    codeListsRoot: path.join(projectRoot, "03-业务链资产", "代码清单"),
-    reviewsRoot: path.join(projectRoot, "03-业务链资产", "波次总结"),
+    mapsRoot: path.join(projectRoot, "chain-assets", "地图"),
+    codeListsRoot: path.join(projectRoot, "chain-assets", "代码清单"),
+    reviewsRoot: path.join(projectRoot, "chain-assets", "波次总结"),
     notificationsRoot: path.join(shareRoot, "notifications"),
     specsRoot: path.join(projectRoot, "04-控制台与方案", "设计文档"),
     plansRoot: path.join(projectRoot, "04-控制台与方案", "实施计划"),
@@ -185,7 +185,7 @@ test("POST /api/requirements/:id/interface-gen writes interface.md", async () =>
   assert.equal(response.statusCode, 200);
   const payload = response.json();
   assert.equal(payload.success, true);
-  const written = await readFile(path.join(fixture.projectRoot, "05-需求", "req-demo", "interface.md"), "utf8");
+  const written = await readFile(path.join(fixture.projectRoot, "demands", "req-demo", "interface.md"), "utf8");
   assert.match(written, /接口约定/);
 });
 
@@ -218,7 +218,7 @@ test("DELETE /api/requirements/:id removes requirement from project-status", asy
   assert.equal(response.statusCode, 200);
   const payload = response.json();
   assert.equal(payload.success, true);
-  assert.match(payload.archivePath, /06-归档/);
+  assert.match(payload.archivePath, /archives/);
   const nextStatus = JSON.parse(await readFile(path.join(fixture.shareRoot, "project-status.json"), "utf8"));
   assert.equal(nextStatus.requirements.length, 0);
 
@@ -226,7 +226,7 @@ test("DELETE /api/requirements/:id removes requirement from project-status", asy
   assert.match(archiveContent, /演示需求 归档总结/);
   assert.match(archiveContent, /业务交付结论/);
 
-  await assert.rejects(() => readFile(path.join(fixture.projectRoot, "05-需求", "req-demo", "演示需求.md"), "utf8"));
+  await assert.rejects(() => readFile(path.join(fixture.projectRoot, "demands", "req-demo", "演示需求.md"), "utf8"));
 });
 
 test("GET /api/requirements/:id/chains/:chainId/attach returns attach command", async () => {

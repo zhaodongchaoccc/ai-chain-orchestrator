@@ -117,7 +117,7 @@ export function getWorkspacePaths(paths: RegistryBasePaths, workspace: Workspace
     actionEventsPath: path.join(scopedShareRoot, "action-events.jsonl"),
     playbooksRoot: paths.playbooksRoot,
     mapsRoot: path.join(paths.mapsRoot, workspace.sourceId),
-    codeListsRoot: path.join(paths.projectRoot, "03-业务链资产", "代码清单", workspace.sourceId),
+    codeListsRoot: path.join(paths.projectRoot, "chain-assets", "代码清单", workspace.sourceId),
     reviewsRoot: path.join(paths.reviewsRoot, workspace.sourceId),
     notificationsRoot: path.join(scopedShareRoot, "notifications"),
     specsRoot: paths.specsRoot ?? path.join(paths.projectRoot, "Specs"),

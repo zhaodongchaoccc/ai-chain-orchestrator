@@ -72,8 +72,8 @@ elif workspaces.exists():
 
 chain_status_file = project_root / "share" / "sources" / source_id / "chain-status.json"
 work_items_dir = project_root / "share" / "sources" / source_id / "work-items"
-maps_root = project_root / "03-业务链资产" / "地图" / source_id
-code_lists_root = project_root / "03-业务链资产" / "代码清单" / source_id
+maps_root = project_root / "chain-assets" / "地图" / source_id
+code_lists_root = project_root / "chain-assets" / "代码清单" / source_id
 load_json = getattr(runtime_sync, "load_json", None)
 print(runtime_sync.build_worker_resume_prompt(chain_id=chain_english, chain_name_zh=chain_chinese, chain_status=load_json(chain_status_file, {}) if callable(load_json) else {}, work_items_dir=work_items_dir, map_path=str(maps_root / f"{chain_english}.md"), chain_status_path=str(chain_status_file), work_item_path=str(work_items_dir / f"{chain_english}.json"), code_list_path=str(code_lists_root / f"{chain_english}.md"), source_doc_path=source_doc_path))
 PY

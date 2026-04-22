@@ -38,7 +38,7 @@ if workspaces.exists():
         pass
 sys.path.insert(0, str(project_root / "share"))
 import runtime_sync
-content = runtime_sync.build_source_main_control_resume_prompt(source_id, source_label=label, latest_path=str(project_root / "Sessions" / "sources" / source_id / "LATEST.md"), main_packet_path=str(project_root / "Sessions" / "sources" / source_id / "main-control-resume.json"), chain_status_path=str(project_root / "share" / "sources" / source_id / "chain-status.json"), queue_path=str(project_root / "share" / "sources" / source_id / "dispatch-queue.json"), source_doc_path=str(project_root / "05-需求" / source_id), work_items_dir=str(project_root / "share" / "sources" / source_id / "work-items"))
+content = runtime_sync.build_source_main_control_resume_prompt(source_id, source_label=label, latest_path=str(project_root / "Sessions" / "sources" / source_id / "LATEST.md"), main_packet_path=str(project_root / "Sessions" / "sources" / source_id / "main-control-resume.json"), chain_status_path=str(project_root / "share" / "sources" / source_id / "chain-status.json"), queue_path=str(project_root / "share" / "sources" / source_id / "dispatch-queue.json"), source_doc_path=str(project_root / "demands" / source_id), work_items_dir=str(project_root / "share" / "sources" / source_id / "work-items"))
 prompt_tmp.write_text(content, encoding="utf-8")
 PY
 

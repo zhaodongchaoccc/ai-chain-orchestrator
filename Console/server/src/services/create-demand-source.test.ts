@@ -13,10 +13,10 @@ async function writeJson(filePath: string, value: unknown) {
 async function makeFixture() {
   const projectRoot = await mkdtemp(path.join(os.tmpdir(), "ff-create-demand-source-"));
   const shareRoot = path.join(projectRoot, "share");
-  const mapsRoot = path.join(projectRoot, "03-业务链资产", "地图");
-  const reviewsRoot = path.join(projectRoot, "03-业务链资产", "波次总结");
-  const codeListsRoot = path.join(projectRoot, "03-业务链资产", "代码清单");
-  const demandTemplatesRoot = path.join(projectRoot, "05-需求", "templates");
+  const mapsRoot = path.join(projectRoot, "chain-assets", "地图");
+  const reviewsRoot = path.join(projectRoot, "chain-assets", "波次总结");
+  const codeListsRoot = path.join(projectRoot, "chain-assets", "代码清单");
+  const demandTemplatesRoot = path.join(projectRoot, "demands", "templates");
   const worktreesRoot = path.join(projectRoot, "ff-worktrees");
 
   await Promise.all([
@@ -34,7 +34,7 @@ async function makeFixture() {
       label: "newfee",
       kind: "combined",
       enabled: true,
-      sourceDocPath: "Projects/飞枢系统/05-需求/newfee/newfee.md",
+      sourceDocPath: "Projects/飞枢系统/demands/newfee/newfee.md",
       worktreePath: path.join(worktreesRoot, "newfee"),
       legacyRoot: false,
       draftIncomplete: false
@@ -126,6 +126,6 @@ test("createDemandSourceByName blocks when matching demand doc does not exist", 
       worktreesRoot: fixture.worktreesRoot,
       demandName: "不存在的需求"
     }),
-    { message: "未找到需求源文件：不存在的需求。请先创建 `Projects/飞枢系统/不存在的需求.md`（或 `Projects/飞枢系统/05-需求/templates/不存在的需求.md`），再点击“新建需求源”。" }
+    { message: "未找到需求源文件：不存在的需求。请先创建 `Projects/飞枢系统/不存在的需求.md`（或 `Projects/飞枢系统/demands/templates/不存在的需求.md`），再点击“新建需求源”。" }
   );
 });

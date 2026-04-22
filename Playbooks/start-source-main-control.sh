@@ -91,7 +91,7 @@ import runtime_sync
 content = runtime_sync.build_source_main_control_resume_prompt(
     source_id,
     source_label=label,
-    source_doc_path=os.environ.get("SOURCE_DOC_PATH", f"{project_root}/05-需求/{source_id}/"),
+    source_doc_path=os.environ.get("SOURCE_DOC_PATH", f"{project_root}/demands/{source_id}/"),
 )
 prompt_path.write_text(content, encoding="utf-8")
 PY

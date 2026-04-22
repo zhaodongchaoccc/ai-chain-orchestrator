@@ -10,7 +10,7 @@
 - Database schema designed
 
 ### S2: Design & Contract ✅
-- OpenAPI spec written: `03-业务链资产/接口文档/UserAuthBackend-api.md`
+- OpenAPI spec written: `chain-assets/接口文档/UserAuthBackend-api.md`
 - DTOs defined
 - Service interfaces declared
 

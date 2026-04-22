@@ -77,7 +77,7 @@ print(runtime_sync.build_source_main_control_resume_prompt(
     main_packet_path='${PROJECT_ROOT}/Sessions/sources/${SOURCE_ID}/main-control-resume.json',
     chain_status_path='${PROJECT_ROOT}/share/sources/${SOURCE_ID}/chain-status.json',
     queue_path='${PROJECT_ROOT}/share/sources/${SOURCE_ID}/dispatch-queue.json',
-    source_doc_path='${PROJECT_ROOT}/05-需求/${SOURCE_ID}/',
+    source_doc_path='${PROJECT_ROOT}/demands/${SOURCE_ID}/',
     work_items_dir='${PROJECT_ROOT}/share/sources/${SOURCE_ID}/work-items',
 ))
 PY

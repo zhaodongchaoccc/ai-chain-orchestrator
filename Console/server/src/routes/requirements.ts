@@ -27,8 +27,8 @@ export function registerRequirementRoutes(server: FastifyInstance, paths: typeof
       return reply.status(409).send({ message: `Requirement already exists: ${sourceId}` });
     }
 
-    const docRelativePath = `Projects/飞枢系统/05-需求/${sourceId}/${title}.md`;
-    const docAbsoluteDir = path.join(paths.projectRoot, "05-需求", sourceId);
+    const docRelativePath = `Projects/飞枢系统/demands/${sourceId}/${title}.md`;
+    const docAbsoluteDir = path.join(paths.projectRoot, "demands", sourceId);
     const docAbsolutePath = path.join(docAbsoluteDir, `${title}.md`);
     await mkdir(docAbsoluteDir, { recursive: true });
     await writeFile(docAbsolutePath, buildRequirementTemplate(title, background), "utf8");
@@ -384,7 +384,7 @@ function buildInterfaceDoc(detail: NonNullable<Awaited<ReturnType<typeof getRequ
 
 async function generateRequirementCodeList(projectRoot: string, requirement: { id: string; chains?: ProjectChainRecord[] }) {
   const chains = (Array.isArray(requirement.chains) ? requirement.chains : []).filter((chain) => typeof chain?.id === "string" && chain.id.length > 0);
-  const codeListsDir = path.join(projectRoot, "03-业务链资产", "代码清单", requirement.id);
+  const codeListsDir = path.join(projectRoot, "chain-assets", "代码清单", requirement.id);
   await mkdir(path.dirname(codeListsDir), { recursive: true });
   await mkdir(codeListsDir, { recursive: true });
 
@@ -426,7 +426,7 @@ async function collectRequirementCodeFiles(projectRoot: string, requirementId: s
   for (const chain of chains) {
     const chainId = chain.id;
     const chainNameZh = chain.titleZh ?? chainId;
-    const codeListPath = path.join(projectRoot, "03-业务链资产", "代码清单", requirementId, `${chainId}.md`);
+    const codeListPath = path.join(projectRoot, "chain-assets", "代码清单", requirementId, `${chainId}.md`);
     try {
       const content = await readFile(codeListPath, "utf8");
       const matches = [...content.matchAll(/^\|\s*`([^`]+)`\s*\|/gmu)];

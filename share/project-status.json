@@ -14,7 +14,7 @@
       "id": "demo",
       "title": "Demo Project",
       "status": "active",
-      "docPath": "05-需求/demo/demo.md",
+      "docPath": "demands/demo/demo.md",
       "worktreePath": "../ff-worktrees/demo",
       "kind": "single",
       "draftIncomplete": false,

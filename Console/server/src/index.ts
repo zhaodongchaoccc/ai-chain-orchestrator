@@ -159,7 +159,7 @@ export function buildServer(options: {
     mapsRoot: serverConfig.paths.mapsRoot,
     reviewsRoot: serverConfig.paths.reviewsRoot,
     codeListsRoot: serverConfig.paths.codeListsRoot,
-    demandTemplatesRoot: `${serverConfig.paths.projectRoot}/05-需求/templates`,
+    demandTemplatesRoot: `${serverConfig.paths.projectRoot}/demands/templates`,
     worktreesRoot: process.env.FF_WORKTREES_ROOT ?? path.join(process.env.HOME ?? os.homedir(), "ff-worktrees"),
     demandName
   }));

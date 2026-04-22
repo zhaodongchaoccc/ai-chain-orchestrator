@@ -236,7 +236,7 @@ export function createActionRunner(paths: typeof ffPaths, deps: ActionRunnerDeps
   }
 
   async function generateChainTestCasesDoc(detail: ChainDetailResponse) {
-    const outputDir = path.join(paths.projectRoot, "03-业务链资产", "测试用例");
+    const outputDir = path.join(paths.projectRoot, "chain-assets", "测试用例");
     await mkdir(outputDir, { recursive: true });
 
     const outputFilename = `${detail.chain.id}-test-cases.md`;
@@ -704,12 +704,12 @@ export function createActionRunner(paths: typeof ffPaths, deps: ActionRunnerDeps
     switch (request.actionType) {
       case "generate_fee_api_docs": {
         const scriptPath = path.join(paths.playbooksRoot, "generate-fee-api-docs.sh");
-        const outputDir = path.join(paths.projectRoot, "03-业务链资产/接口文档");
+        const outputDir = path.join(paths.projectRoot, "chain-assets/接口文档");
         const { stdout } = await execFile("bash", [scriptPath], { cwd: paths.projectRoot, timeout: request.timeoutMs ?? 5000 });
         const payload = JSON.parse(stdout.trim()) as { generated_files?: string[]; included_chain_ids?: string[] };
         const generatedFiles = payload.generated_files ?? [];
         const includedChainIds = (payload.included_chain_ids ?? []) as ChainId[];
-        const outputDirRelative = path.relative(paths.projectRoot, outputDir) || "03-业务链资产/接口文档";
+        const outputDirRelative = path.relative(paths.projectRoot, outputDir) || "chain-assets/接口文档";
         const eventId = await persistActionEvent({
           actionType: request.actionType,
           title: "已生成收费联调接口文档",
@@ -735,7 +735,7 @@ export function createActionRunner(paths: typeof ffPaths, deps: ActionRunnerDeps
       case "generate_chain_test_cases": {
         const detail = await resolveChainContext(request.targetId);
         const generated = await generateChainTestCasesDoc(detail);
-        const outputDirRelative = path.relative(paths.projectRoot, generated.outputDir) || "03-业务链资产/测试用例";
+        const outputDirRelative = path.relative(paths.projectRoot, generated.outputDir) || "chain-assets/测试用例";
         const outputPathRelative = path.relative(paths.projectRoot, generated.outputPath) || `${outputDirRelative}/${generated.outputFilename}`;
         const eventId = await persistActionEvent({
           actionType: request.actionType,
