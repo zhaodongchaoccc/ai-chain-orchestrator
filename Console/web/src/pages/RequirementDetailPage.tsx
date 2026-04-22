@@ -178,7 +178,7 @@ export function RequirementDetailPage({ requirementId, onBack, onOpenSystem }: R
               <span className="field__label">代码仓库</span>
               <select className="field__input" onChange={(event) => setChainRepoKey(event.target.value as "backend" | "frontend")} value={chainRepoKey}>
                 <option value="backend">backend (~/ff)</option>
-                <option value="frontend">frontend (~/ccweb/saas-cc-web-ydzee)</option>
+                <option value="frontend">frontend (~/frontend/your-frontend-repo)</option>
               </select>
             </label>
 
@@ -363,7 +363,7 @@ export function RequirementDetailPage({ requirementId, onBack, onOpenSystem }: R
 function formatRepoLabel(repoKey: string) {
   return {
     backend: "backend (~/ff)",
-    frontend: "frontend (~/ccweb/saas-cc-web-ydzee)"
+    frontend: "frontend (~/frontend/your-frontend-repo)"
   }[repoKey] ?? repoKey;
 }
 

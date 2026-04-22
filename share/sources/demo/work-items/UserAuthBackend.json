@@ -1,0 +1,29 @@
+{
+  "UserAuthBackend": {
+    "mode": "active",
+    "currentTask": "Complete UserController and write integration tests",
+    "expectedOutput": "All endpoints tested with 80%+ coverage",
+    "allowedActions": ["implement", "test", "commit", "document"],
+    "forbiddenActions": ["deploy", "merge"],
+    "lastVerifiedAt": "2026-04-22T10:00:00Z",
+    "lastVerifiedBy": "system"
+  },
+  "UserAdminFrontend": {
+    "mode": "hold",
+    "currentTask": "Wait for backend API contract finalization",
+    "expectedOutput": "API integration spec document",
+    "allowedActions": ["design", "review"],
+    "forbiddenActions": ["implement", "integrate"],
+    "lastVerifiedAt": "2026-04-22T10:00:00Z",
+    "lastVerifiedBy": "system"
+  },
+  "Defect": {
+    "mode": "idle",
+    "currentTask": null,
+    "expectedOutput": null,
+    "allowedActions": [],
+    "forbiddenActions": ["implement"],
+    "lastVerifiedAt": null,
+    "lastVerifiedBy": null
+  }
+}

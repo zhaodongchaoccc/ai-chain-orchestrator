@@ -1,0 +1,41 @@
+[
+  {
+    "id": "UserAuthBackend",
+    "titleZh": "用户认证后端",
+    "type": "backend",
+    "repoKey": "backend",
+    "branch": "feature/user-auth",
+    "status": "active",
+    "stage": "S3",
+    "session": "chain-demo-UserAuthBackend",
+    "updatedAt": "2026-04-22T10:00:00Z",
+    "summary": "Database and service layer complete. Controller and tests in progress.",
+    "blocked": false
+  },
+  {
+    "id": "UserAdminFrontend",
+    "titleZh": "用户管理前端",
+    "type": "frontend",
+    "repoKey": "frontend",
+    "branch": "feature/user-admin",
+    "status": "idle",
+    "stage": "PENDING",
+    "session": "chain-demo-UserAdminFrontend",
+    "updatedAt": "2026-04-22T10:00:00Z",
+    "summary": "UI design complete. Waiting for backend API contract.",
+    "blocked": false
+  },
+  {
+    "id": "Defect",
+    "titleZh": "缺陷处理",
+    "type": "backend",
+    "repoKey": "backend",
+    "branch": null,
+    "status": "idle",
+    "stage": "PENDING",
+    "session": "chain-demo-Defect",
+    "updatedAt": null,
+    "summary": "Defect tracking chain. Idle until defects are reported.",
+    "blocked": false
+  }
+]

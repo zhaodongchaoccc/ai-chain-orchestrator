@@ -67,15 +67,34 @@ cd Console/server && npm install
 cd Console/web && npm install
 ```
 
+### First-Time Setup
+
+Before first run, ensure the required directories exist:
+
+```bash
+# Create asset directories (used by the framework)
+mkdir -p 03-业务链资产/地图
+mkdir -p 03-业务链资产/代码清单
+mkdir -p 03-业务链资产/波次总结
+mkdir -p 05-需求
+mkdir -p Sessions
+
+# Configure environment (WSL2 only)
+bash share/scripts/setup-wsl2.sh
+source ~/.bashrc
+```
+
 ### Start Development
 
 ```bash
 # Terminal 1: Backend (port 8787)
 cd Console/server
+npm install
 npm run dev
 
 # Terminal 2: Frontend (port 4173)
 cd Console/web
+npm install
 npm run dev
 
 # Browser
@@ -154,9 +173,9 @@ For WSL2 users, see [WSL2-快速启动.md](./WSL2-快速启动.md) (Chinese) for
 | `PROJECT_ROOT` | Project root path | Auto-detected |
 | `VAULT` | Obsidian Vault path | Auto-detected |
 | `FF_REPO_PATH` | Backend repo path | `~/ff` |
-| `FRONTEND_REPO_PATH` | Frontend repo path | `~/ccweb/saas-cc-web-ydzee` |
+| `FRONTEND_REPO_PATH` | Frontend repo path | `~/frontend/your-frontend-repo` |
 | `FF_WORKTREES_ROOT` | Backend worktrees root | `~/ff-worktrees` |
-| `FRONTEND_WORKTREES_ROOT` | Frontend worktrees root | `~/ccweb-worktrees` |
+| `FRONTEND_WORKTREES_ROOT` | Frontend worktrees root | `~/frontend-worktrees` |
 | `LINGGEN_DIR` | linggen binary directory | `~/linggen/target/release` |
 
 ## Development

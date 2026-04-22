@@ -372,8 +372,8 @@ test("start chain playbook uses repoKey-specific worktree for frontend chains", 
   const shareRoot = path.join(projectRoot, "share");
   const scopedShareRoot = path.join(shareRoot, "sources", "req-ui");
   const backendRepo = path.join(homeRoot, "ff");
-  const frontendRepo = path.join(homeRoot, "ccweb", "saas-cc-web-ydzee");
-  const frontendWorktreesRoot = path.join(homeRoot, "ccweb-worktrees");
+  const frontendRepo = path.join(homeRoot, "frontend", "your-frontend-repo");
+  const frontendWorktreesRoot = path.join(homeRoot, "frontend-worktrees");
   const binRoot = path.join(homeRoot, "bin");
   const tmuxStatePath = path.join(homeRoot, "tmux-state.txt");
   const gitStatePath = path.join(homeRoot, "git-state.txt");
@@ -396,8 +396,8 @@ test("start chain playbook uses repoKey-specific worktree for frontend chains", 
             worktreesBase: "~/ff-worktrees"
           },
           frontend: {
-            path: "~/ccweb/saas-cc-web-ydzee",
-            worktreesBase: "~/ccweb-worktrees"
+            path: "~/frontend/your-frontend-repo",
+            worktreesBase: "~/frontend-worktrees"
           }
         },
         requirements: [
@@ -500,7 +500,7 @@ esac
   const tmuxState = await readFile(tmuxStatePath, "utf-8");
   const gitState = await readFile(gitStatePath, "utf-8");
   assert.match(stdout, /已启动 session: chain-req-ui-ChargeDashboardPage/);
-  assert.match(tmuxState, /new-session .*chain-req-ui-ChargeDashboardPage -c .*ccweb-worktrees\/req-ui$/m);
-  assert.match(gitState, /-C .*ccweb\/saas-cc-web-ydzee show-ref --verify --quiet refs\/heads\/source\/req-ui/m);
-  assert.match(gitState, /-C .*ccweb\/saas-cc-web-ydzee worktree add .*ccweb-worktrees\/req-ui -b source\/req-ui/m);
+  assert.match(tmuxState, /new-session .*chain-req-ui-ChargeDashboardPage -c .*frontend-worktrees\/req-ui$/m);
+  assert.match(gitState, /-C .*ccweb\/your-frontend-repo show-ref --verify --quiet refs\/heads\/source\/req-ui/m);
+  assert.match(gitState, /-C .*ccweb\/your-frontend-repo worktree add .*frontend-worktrees\/req-ui -b source\/req-ui/m);
 });

@@ -421,7 +421,7 @@ function isSectionStaleForChain(section: Section, s5ChainIds: Set<string>): bool
 
   // Check if body is mostly implementation-specific lines referencing S5 chains
   const implPatterns = [
-    /\/easyacctg\//u,
+    /\/example-module\//u,
     /src\/test\/java\//u,
     /mvn.*-Dtest=/u,
     /discountAmount|paymentMethod|bizTypeEnum|expenseTypeEnum/u,

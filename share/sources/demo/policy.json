@@ -1,0 +1,7 @@
+{
+  "status": "stopped",
+  "pinned": false,
+  "maxConcurrent": 2,
+  "idleThresholdMinutes": 30,
+  "batchSize": 3
+}

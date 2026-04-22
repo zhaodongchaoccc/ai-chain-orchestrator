@@ -3,8 +3,7 @@ import { existsSync } from "node:fs";
 
 function looksLikeProjectRoot(candidate: string) {
   const required = ["share", "Playbooks"];
-  const hasAssetRoot = ["03-业务链资产", "Maps"].some((segment) => existsSync(path.join(candidate, segment)));
-  return required.every((segment) => existsSync(path.join(candidate, segment))) && hasAssetRoot;
+  return required.every((segment) => existsSync(path.join(candidate, segment)));
 }
 
 export function resolveProjectRoot(fromDir: string) {

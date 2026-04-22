@@ -1,0 +1,27 @@
+{
+  "chains": [
+    {
+      "id": "UserAuthBackend",
+      "stage": "S3",
+      "status": "active",
+      "updatedAt": "2026-04-22",
+      "summary": "Database and service layer complete. Controller and tests in progress."
+    },
+    {
+      "id": "UserAdminFrontend",
+      "stage": "S2",
+      "status": "idle",
+      "updatedAt": "2026-04-22",
+      "summary": "UI design complete. Waiting for backend API contract."
+    },
+    {
+      "id": "Defect",
+      "stage": "PENDING",
+      "status": "idle",
+      "updatedAt": null,
+      "summary": "No active defects."
+    }
+  ],
+  "currentWave": "P0",
+  "updatedAt": "2026-04-22T10:00:00Z"
+}

@@ -56,14 +56,14 @@ echo ""
 read -rp "ff 后端仓库路径 [${HOME}/ff]: " FF_REPO_PATH
 FF_REPO_PATH=${FF_REPO_PATH:-${HOME}/ff}
 
-read -rp "前端仓库路径 [${HOME}/ccweb/saas-cc-web-ydzee]: " FRONTEND_REPO_PATH
-FRONTEND_REPO_PATH=${FRONTEND_REPO_PATH:-${HOME}/ccweb/saas-cc-web-ydzee}
+read -rp "前端仓库路径 [${HOME}/frontend/your-frontend-repo]: " FRONTEND_REPO_PATH
+FRONTEND_REPO_PATH=${FRONTEND_REPO_PATH:-${HOME}/frontend/your-frontend-repo}
 
 read -rp "ff worktrees 根目录 [${HOME}/ff-worktrees]: " FF_WORKTREES_ROOT
 FF_WORKTREES_ROOT=${FF_WORKTREES_ROOT:-${HOME}/ff-worktrees}
 
-read -rp "前端 worktrees 根目录 [${HOME}/ccweb-worktrees]: " FRONTEND_WORKTREES_ROOT
-FRONTEND_WORKTREES_ROOT=${FRONTEND_WORKTREES_ROOT:-${HOME}/ccweb-worktrees}
+read -rp "前端 worktrees 根目录 [${HOME}/frontend-worktrees]: " FRONTEND_WORKTREES_ROOT
+FRONTEND_WORKTREES_ROOT=${FRONTEND_WORKTREES_ROOT:-${HOME}/frontend-worktrees}
 
 read -rp "linggen 构建目录 [${HOME}/linggen/target/release]: " LINGGEN_DIR
 LINGGEN_DIR=${LINGGEN_DIR:-${HOME}/linggen/target/release}

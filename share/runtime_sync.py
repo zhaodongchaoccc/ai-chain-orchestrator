@@ -86,7 +86,7 @@ def _get_frontend_repo_path() -> Path:
         value = os.environ.get(key)
         if value:
             return Path(value).expanduser()
-    return Path.home() / "ccweb" / "saas-cc-web-ydzee"
+    return Path.home() / "frontend" / "your-frontend-repo"
 
 
 def _get_ff_worktrees_root() -> Path:
@@ -101,7 +101,7 @@ def _get_frontend_worktrees_root() -> Path:
         value = os.environ.get(key)
         if value:
             return Path(value).expanduser()
-    return Path.home() / "ccweb-worktrees"
+    return Path.home() / "frontend-worktrees"
 
 
 def _project_path(*parts: str) -> Path:

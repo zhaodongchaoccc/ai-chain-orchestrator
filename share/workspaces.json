@@ -1,0 +1,12 @@
+[
+  {
+    "sourceId": "demo",
+    "label": "Demo Project",
+    "kind": "single",
+    "enabled": true,
+    "sourceDocPath": "05-需求/demo/demo.md",
+    "worktreePath": "../ff-worktrees/demo",
+    "legacyRoot": false,
+    "draftIncomplete": false
+  }
+]

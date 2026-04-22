@@ -38,7 +38,7 @@ async function makeFixture() {
   await writeJson(path.join(shareRoot, "project-status.json"), {
     repos: {
       backend: { path: "~/ff", worktreesBase: "~/ff-worktrees" },
-      frontend: { path: "~/ccweb/saas-cc-web-ydzee", worktreesBase: "~/ccweb-worktrees" }
+      frontend: { path: "~/frontend/your-frontend-repo", worktreesBase: "~/frontend-worktrees" }
     },
     requirements: [
       {

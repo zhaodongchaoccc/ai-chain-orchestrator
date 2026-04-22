@@ -25,11 +25,11 @@ export interface WorkspacePaths extends ControlPlanePaths {
 }
 
 const DEFAULT_WORKSPACE: WorkspaceRegistryEntry = {
-  sourceId: "newfee",
-  label: "newfee",
-  kind: "combined",
+  sourceId: "demo",
+  label: "Demo Project",
+  kind: "single",
   enabled: true,
-  sourceDocPath: "Projects/飞枢系统/newfee.md",
+  sourceDocPath: "README.md",
   worktreePath: null,
   legacyRoot: false,
   draftIncomplete: false
