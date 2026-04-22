@@ -1,0 +1,251 @@
+.chain-detail-hero,
+.command-block,
+.detail-subsection {
+  display: grid;
+  gap: 16px;
+}
+
+.chain-detail-hero__main,
+.chain-detail-hero__badges,
+.chain-detail-hero__actions,
+.detail-actions,
+.detail-list__meta,
+.detail-list__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.chain-detail-hero__main,
+.detail-list__footer {
+  flex-wrap: wrap;
+}
+
+.chain-detail-hero__actions {
+  justify-content: flex-end;
+}
+
+.chain-detail-hero__subtitle,
+.chain-detail-copy,
+.detail-feedback,
+.detail-list p {
+  margin: 0;
+  color: #a9b4c8;
+  line-height: 1.6;
+}
+
+.breadcrumb-button {
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #a4d0ff;
+  cursor: pointer;
+  font: inherit;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.detail-grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.detail-grid dt {
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: #7f8da5;
+}
+
+.detail-grid dd {
+  margin: 0;
+}
+
+.command-block code,
+.detail-list__footer code,
+.doc-card code {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #d4dded;
+  font-size: 0.78rem;
+  line-break: anywhere;
+}
+
+.detail-list,
+.doc-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.detail-list__item,
+.doc-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.detail-list__meta,
+.detail-list__footer {
+  font-size: 0.86rem;
+}
+
+.doc-card strong,
+.detail-list__meta strong {
+  font-size: 0.95rem;
+}
+
+.content-grid--detail {
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+}
+
+.chain-takeover-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.chain-takeover-sheet__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+}
+
+.chain-takeover-sheet__scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(5, 10, 18, 0.64);
+  backdrop-filter: blur(8px);
+}
+
+.chain-takeover-sheet {
+  position: absolute;
+  right: 28px;
+  top: 120px;
+  width: min(100%, 440px);
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(12, 19, 30, 0.97);
+  border: 1px solid rgba(138, 192, 255, 0.12);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34);
+}
+
+.chain-takeover-sheet__actions {
+  display: grid;
+  gap: 10px;
+}
+
+.chain-takeover-sheet__session {
+  padding: 14px;
+}
+
+.chain-takeover-console,
+.chain-takeover-console__actions,
+.chain-takeover-console__tips {
+  display: grid;
+  gap: 12px;
+}
+
+.chain-takeover-console__actions {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.chain-takeover-console__tips {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.chain-takeover-console__tips span {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #a9b4c8;
+  line-height: 1.6;
+}
+
+.chain-takeover-console__action-card {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.chain-takeover-console__action-card span {
+  color: #a9b4c8;
+  line-height: 1.5;
+}
+
+.chain-takeover-console__action-card .action-button,
+.chain-takeover-console__action-card .secondary-button {
+  width: 100%;
+}
+
+.field-label {
+  display: grid;
+  gap: 8px;
+  color: #dfe6f5;
+}
+
+.field-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(9, 14, 25, 0.82);
+  color: #f4f7fb;
+}
+
+.field-input--textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.field-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #dfe6f5;
+}
+
+@media (max-width: 1024px) {
+  .content-grid--detail {
+    grid-template-columns: 1fr;
+  }
+
+  .chain-takeover-sheet {
+    right: 20px;
+    left: 20px;
+    width: auto;
+  }
+
+  .chain-takeover-console__actions,
+  .chain-takeover-console__tips {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .chain-detail-hero__main,
+  .chain-detail-hero__badges,
+  .chain-detail-hero__actions,
+  .detail-actions,
+  .detail-list__meta,
+  .detail-list__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

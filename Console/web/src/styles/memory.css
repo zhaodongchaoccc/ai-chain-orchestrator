@@ -1,0 +1,254 @@
+/* ── Memory Page ─────────────────────────────────────────── */
+
+.memory-page {
+  padding: 24px 20px 40px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── Status bar ──────────────────────────────────────────── */
+
+.memory-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(10, 18, 30, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.memory-status-bar__badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(138, 192, 255, 0.12);
+  color: var(--accent-active);
+}
+
+.memory-status-bar__badge--running {
+  background: rgba(240, 199, 120, 0.15);
+  color: var(--accent-warning);
+}
+
+.memory-status-bar__badge--disabled {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+}
+
+.memory-status-bar__meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.memory-status-bar__meta span {
+  white-space: nowrap;
+}
+
+.memory-status-bar__actions {
+  margin-left: auto;
+}
+
+/* ── Distill button ──────────────────────────────────────── */
+
+.btn-distill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid rgba(138, 192, 255, 0.28);
+  background: rgba(138, 192, 255, 0.08);
+  color: var(--accent-active);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-distill:hover:not(:disabled) {
+  background: rgba(138, 192, 255, 0.16);
+  border-color: rgba(138, 192, 255, 0.44);
+}
+
+.btn-distill:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Stats row ───────────────────────────────────────────── */
+
+.memory-stats {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.memory-stat-card {
+  flex: 1 1 140px;
+  padding: 12px 16px;
+  background: var(--surface-panel);
+  border: 1px solid var(--surface-line);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.memory-stat-card__value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-active);
+  line-height: 1.2;
+}
+
+.memory-stat-card__label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Categories grid ─────────────────────────────────────── */
+
+.memory-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.memory-category {
+  padding: 14px 16px;
+  background: var(--surface-panel);
+  border: 1px solid var(--surface-line);
+  border-radius: 12px;
+}
+
+.memory-category__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.memory-category__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.memory-category__count {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.memory-category__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.memory-category__item {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  word-break: break-word;
+}
+
+.memory-category__item:last-child {
+  border-bottom: none;
+}
+
+.memory-category__sources {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--surface-line);
+  font-size: 10px;
+  color: rgba(169, 180, 200, 0.5);
+}
+
+/* ── Sources list ────────────────────────────────────────── */
+
+.memory-sources {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.memory-source-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(134, 226, 172, 0.08);
+  color: var(--accent-done);
+  border: 1px solid rgba(134, 226, 172, 0.16);
+}
+
+/* ── Empty / loading states ──────────────────────────────── */
+
+.memory-empty {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  background: var(--surface-panel);
+  border: 1px dashed var(--surface-line-strong);
+  border-radius: 12px;
+}
+
+.memory-empty__hint {
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.memory-result-message {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.memory-result-message--success {
+  background: rgba(134, 226, 172, 0.1);
+  border: 1px solid rgba(134, 226, 172, 0.2);
+  color: var(--accent-done);
+}
+
+.memory-result-message--error {
+  background: rgba(255, 173, 161, 0.1);
+  border: 1px solid rgba(255, 173, 161, 0.2);
+  color: var(--accent-critical);
+}
+
+@media (max-width: 600px) {
+  .memory-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-stats {
+    flex-direction: column;
+  }
+
+  .memory-status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .memory-status-bar__actions {
+    margin-left: 0;
+  }
+}

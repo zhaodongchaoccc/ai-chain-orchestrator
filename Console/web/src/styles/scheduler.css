@@ -1,0 +1,89 @@
+.scheduler-health-list,
+.scheduler-action-grid,
+.dialog-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.scheduler-health-list span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d4dded;
+  font-size: 0.84rem;
+}
+
+.scheduler-action-grid {
+  margin-top: 16px;
+}
+
+.scheduler-action-grid .action-button {
+  width: auto;
+}
+
+.scheduler-queue-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.secondary-button {
+  min-height: 38px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #eff5ff;
+  cursor: pointer;
+}
+
+.secondary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(5, 10, 18, 0.62);
+  backdrop-filter: blur(8px);
+}
+
+.dialog-card {
+  width: min(100%, 460px);
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(15, 24, 37, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
+}
+
+.dialog-card__header,
+.dialog-card__body {
+  margin-bottom: 16px;
+}
+
+.dialog-card__header h2,
+.dialog-card__body p {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .scheduler-queue-row,
+  .dialog-card__actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .scheduler-action-grid .action-button,
+  .secondary-button {
+    width: 100%;
+  }
+}

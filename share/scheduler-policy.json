@@ -1,0 +1,8 @@
+{
+  "maxConcurrent": 3,
+  "temporaryPinnedChains": [
+    "OldDataUpgrade"
+  ],
+  "pinnedChainsConsumeSlots": true,
+  "manualSessionHoldMinutes": 60
+}
