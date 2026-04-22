@@ -157,7 +157,7 @@ ai-chain-orchestrator/
 
 ## WSL2 Setup Guide
 
-For WSL2 users, see [WSL2-快速启动.md](./WSL2-快速启动.md) (Chinese) for detailed setup instructions.
+For WSL2 users, see [WSL2-QUICKSTART.md](./WSL2-QUICKSTART.md) for detailed setup instructions.
 
 ### Key Differences from macOS
 

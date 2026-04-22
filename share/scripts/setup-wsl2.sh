@@ -2,7 +2,7 @@
 # setup-wsl2.sh — 一键检测 WSL2 环境并生成 ~/.bashrc 配置
 set -euo pipefail
 
-echo "=== 飞枢系统 WSL2 环境配置向导 ==="
+echo "=== AI Chain Orchestrator WSL2 Setup Wizard ==="
 echo ""
 
 # 1. 检测是否在 WSL2
@@ -27,45 +27,37 @@ echo ""
 # 3. 推导并验证 Vault 路径
 DEFAULT_VAULT="/mnt/c/Users/${WIN_USER}/PasObsidian"
 if [ -d "$DEFAULT_VAULT" ]; then
-  echo "✓ 默认 Vault 路径存在: $DEFAULT_VAULT"
+  echo "✓ Default Vault path exists: $DEFAULT_VAULT"
   VAULT="$DEFAULT_VAULT"
 else
-  echo "⚠ 默认 Vault 路径不存在: $DEFAULT_VAULT"
-  read -rp "请手动输入 Vault 在 WSL2 中的绝对路径 (例如 /mnt/d/PasObsidian): " VAULT
+  echo "⚠ Default Vault path not found: $DEFAULT_VAULT"
+  read -rp "Please enter Vault absolute path in WSL2 (e.g. /mnt/d/PasObsidian): " VAULT
   if [ ! -d "$VAULT" ]; then
-    echo "错误：路径 $VAULT 不存在。请确认 Obsidian Vault 已创建。"
-    exit 1
-  fi
-fi
-
-PROJECT_ROOT="${VAULT}/Projects/飞枢系统"
-if [ ! -d "$PROJECT_ROOT" ]; then
-  echo "错误：项目根目录不存在: $PROJECT_ROOT"
-  echo "请确保飞枢系统项目已克隆或解压到 Vault/Projects/飞枢系统/"
+  echo "Error: Vault path $VAULT does not exist. Please create Obsidian Vault first."
   exit 1
 fi
 
-echo "✓ 项目根目录: $PROJECT_ROOT"
+echo "✓ Project root: $PROJECT_ROOT"
 echo ""
 
-# 4. 业务仓库路径（用户自定义）
-echo "--- 业务仓库路径配置 ---"
-echo "提示：以下路径为默认值，请按实际位置修改。"
+# 4. Business repo paths (customizable)
+echo "--- Business Repo Configuration ---"
+echo "Tips: The following are default paths. Modify as needed."
 echo ""
 
-read -rp "ff 后端仓库路径 [${HOME}/ff]: " FF_REPO_PATH
+read -rp "Backend repo path [${HOME}/ff]: " FF_REPO_PATH
 FF_REPO_PATH=${FF_REPO_PATH:-${HOME}/ff}
 
-read -rp "前端仓库路径 [${HOME}/frontend/your-frontend-repo]: " FRONTEND_REPO_PATH
+read -rp "Frontend repo path [${HOME}/frontend/your-frontend-repo]: " FRONTEND_REPO_PATH
 FRONTEND_REPO_PATH=${FRONTEND_REPO_PATH:-${HOME}/frontend/your-frontend-repo}
 
-read -rp "ff worktrees 根目录 [${HOME}/ff-worktrees]: " FF_WORKTREES_ROOT
+read -rp "Backend worktrees root [${HOME}/ff-worktrees]: " FF_WORKTREES_ROOT
 FF_WORKTREES_ROOT=${FF_WORKTREES_ROOT:-${HOME}/ff-worktrees}
 
-read -rp "前端 worktrees 根目录 [${HOME}/frontend-worktrees]: " FRONTEND_WORKTREES_ROOT
+read -rp "Frontend worktrees root [${HOME}/frontend-worktrees]: " FRONTEND_WORKTREES_ROOT
 FRONTEND_WORKTREES_ROOT=${FRONTEND_WORKTREES_ROOT:-${HOME}/frontend-worktrees}
 
-read -rp "linggen 构建目录 [${HOME}/linggen/target/release]: " LINGGEN_DIR
+read -rp "linggen build directory [${HOME}/linggen/target/release]: " LINGGEN_DIR
 LINGGEN_DIR=${LINGGEN_DIR:-${HOME}/linggen/target/release}
 
 echo ""
@@ -77,7 +69,7 @@ cp "$BASHRC" "$BACKUP" 2>/dev/null || true
 
 cat >> "$BASHRC" <<EOF
 
-# ===== 飞枢系统 WSL2 环境变量（自动配置于 $(date -Iseconds)） =====
+# ===== AI Chain Orchestrator WSL2 Environment Variables (Configured at $(date -Iseconds)) =====
 export VAULT="${VAULT}"
 export PROJECT_ROOT="${PROJECT_ROOT}"
 export FF_REPO_PATH="${FF_REPO_PATH}"
@@ -88,10 +80,10 @@ export LINGGEN_DIR="${LINGGEN_DIR}"
 # ================================================================
 EOF
 
-echo "✓ 配置已追加到 ${BASHRC}"
-echo "  备份文件: ${BACKUP}"
+echo "✓ Configuration appended to ${BASHRC}"
+echo "  Backup file: ${BACKUP}"
 echo ""
-echo "=== 配置摘要 ==="
+echo "=== Configuration Summary ==="
 echo "VAULT                  = ${VAULT}"
 echo "PROJECT_ROOT           = ${PROJECT_ROOT}"
 echo "FF_REPO_PATH           = ${FF_REPO_PATH}"
@@ -100,7 +92,7 @@ echo "FF_WORKTREES_ROOT      = ${FF_WORKTREES_ROOT}"
 echo "FRONTEND_WORKTREES_ROOT = ${FRONTEND_WORKTREES_ROOT}"
 echo "LINGGEN_DIR            = ${LINGGEN_DIR}"
 echo ""
-echo "请运行以下命令使配置生效："
+echo "Run the following command to apply configuration:"
 echo "  source ~/.bashrc"
 echo ""
-echo "然后即可正常启动飞枢系统后端（node server/src/index.ts）。"
+echo "Then start the backend (node server/src/index.ts)."

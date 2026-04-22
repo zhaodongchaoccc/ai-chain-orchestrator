@@ -1,6 +1,6 @@
-# 飞枢台
+# Control Panel
 
-`飞枢台` 是飞枢系统当前“业务链驱动的多智能体研发编排系统”的总控可视化控制壳。
+`Control Panel` 是AI Chain Orchestrator当前“业务链驱动的多智能体研发编排系统”的总控可视化控制壳。
 
 它不替代现有执行层，而是对以下系统做统一聚合与展示：
 
@@ -41,22 +41,22 @@
 
 ### 一套启动整个控制中心
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/start/start-飞枢台.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/start/start-Control Panel.sh"
 ```
 
 ### 一套停止整个控制中心
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/start/stop-飞枢台.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/start/stop-Control Panel.sh"
 ```
 
 ### 一套查看整个控制中心状态
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/start/status-飞枢台.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/start/status-Control Panel.sh"
 ```
 
 ### 一套重启整个控制中心
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/start/restart-飞枢台.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/start/restart-Control Panel.sh"
 ```
 
 这组脚本会统一管理两层：
@@ -64,33 +64,33 @@ bash "~/PasObsidian/Projects/飞枢系统/Playbooks/start/restart-飞枢台.sh"
 - `Console` 浏览器控制台层
 
 需求子主控仍支持单独管理：
-- `bash "~/PasObsidian/Projects/飞枢系统/Playbooks/start-source-main-control.sh" <sourceId>`
-- `bash "~/PasObsidian/Projects/飞枢系统/Playbooks/sleep-source-main-control.sh" <sourceId>`
-- `bash "~/PasObsidian/Projects/飞枢系统/Playbooks/rotate-source-main-control.sh" <sourceId>`
+- `bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/start-source-main-control.sh" <sourceId>`
+- `bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/sleep-source-main-control.sh" <sourceId>`
+- `bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/rotate-source-main-control.sh" <sourceId>`
 
 ### 启动
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/start-console.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/start-console.sh"
 ```
 
 ### 重启
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/restart-console.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/restart-console.sh"
 ```
 
 ### 停止
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/stop-console.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/stop-console.sh"
 ```
 
 ### 状态
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/status-console.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/status-console.sh"
 ```
 
 ### 清理遗留 `work-item` 运行态字段
 ```bash
-bash "~/PasObsidian/Projects/飞枢系统/Playbooks/cleanup-legacy-work-item-modes.sh"
+bash "~/PasObsidian/Projects/AI Chain Orchestrator/Playbooks/cleanup-legacy-work-item-modes.sh"
 ```
 
 这个脚本会批量移除 `share/**/work-items/*.json` 里的遗留 `mode` / `recoverable`，用于把历史文件迁移到“真值派生 mode”的新模型。
@@ -126,17 +126,17 @@ bash "~/PasObsidian/Projects/飞枢系统/Playbooks/cleanup-legacy-work-item-mod
 - 所有危险动作仍需经过受控白名单与确认门禁
 
 ## 真值来源
-- `Projects/飞枢系统/share/chain-registry.json`
-- `Projects/飞枢系统/share/scheduler-state.json`
-- `Projects/飞枢系统/share/sources/newfee/chain-status.json`
-- `Projects/飞枢系统/share/sources/newfee/dispatch-queue.json`
-- `Projects/飞枢系统/share/chinese-chain-names.json`
-- `Projects/飞枢系统/share/notifications/`
-- `Projects/飞枢系统/share/action-events.jsonl`
-- `Projects/飞枢系统/Playbooks/dispatch-watcher.pid`
-- `Projects/飞枢系统/Playbooks/dispatch-watcher.log`
-- `Projects/飞枢系统/chain-assets/地图/`
-- `Projects/飞枢系统/chain-assets/波次总结/`
+- `Projects/AI Chain Orchestrator/share/chain-registry.json`
+- `Projects/AI Chain Orchestrator/share/scheduler-state.json`
+- `Projects/AI Chain Orchestrator/share/sources/newfee/chain-status.json`
+- `Projects/AI Chain Orchestrator/share/sources/newfee/dispatch-queue.json`
+- `Projects/AI Chain Orchestrator/share/chinese-chain-names.json`
+- `Projects/AI Chain Orchestrator/share/notifications/`
+- `Projects/AI Chain Orchestrator/share/action-events.jsonl`
+- `Projects/AI Chain Orchestrator/Playbooks/dispatch-watcher.pid`
+- `Projects/AI Chain Orchestrator/Playbooks/dispatch-watcher.log`
+- `Projects/AI Chain Orchestrator/chain-assets/地图/`
+- `Projects/AI Chain Orchestrator/chain-assets/波次总结/`
 - `tmux ls`
 
 ## 支撑文档
