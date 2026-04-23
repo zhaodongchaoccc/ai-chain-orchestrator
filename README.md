@@ -180,6 +180,16 @@ For WSL2 users, see [WSL2-QUICKSTART.md](./WSL2-QUICKSTART.md) for detailed setu
 
 ## Development
 
+### Execution Rules
+
+Use this compact rule set as the default coding behavior for agents working inside this framework:
+
+- Check ground truth first; if still unclear, then ask.
+- Choose the smallest solution that fully solves the task.
+- Change only what is required by the current request.
+- Every step must be verifiable by tests, commands, or visible outcomes.
+- If project-specific workflow rules conflict with generic coding rules, project workflow wins.
+
 ### Running Tests
 
 ```bash
